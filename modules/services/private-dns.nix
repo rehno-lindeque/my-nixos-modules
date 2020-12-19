@@ -67,6 +67,7 @@ in
       { nameservers = [];
         hosts = lib.optionalAttrs cfg.useTor
           { "127.0.0.1" = [ "dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion" ]; };
+        resolvconf.useLocalResolver = true;
       }
       (mkIf config.networking.networkmanager.enable {
         networkmanager.dns = "none";
