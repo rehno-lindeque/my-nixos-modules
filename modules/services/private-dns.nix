@@ -80,7 +80,7 @@ in
       torsocks.enable = true;
     };
 
-    # DNS-over-TLS resolver 
+    # DNS-over-TLS resolver
     services.stubby = {
       enable = true;
       listenAddresses = [ "127.0.0.1@53000" "0::1@53000" ];
@@ -94,30 +94,30 @@ in
     } // lib.optionalAttrs cfg.useTor {
       authenticationMode = "GETDNS_AUTHENTICATION_NONE";
       upstreamServers = ''
-        - address_data: 127.0.0.1
+            - address_data: 127.0.0.1
         '';
     } // lib.optionalAttrs (!cfg.useTor) {
-        upstreamServers = ''
+      upstreamServers = ''
         - address_data: 1.1.1.1
           tls_auth_name: "cloudflare-dns.com"
           tls_pubkey_pinset:
                 - digest: "sha256"
-                  value: V6zes8hHBVwUECsHf7uV5xGM7dj3uMXIS9//7qC8+jU=
+                  value: RKlx+/Jwn2A+dVoU8gQWeRN2+2JxXcFkAczKfgU8OAI=
         - address_data: 2606:4700:4700::1111
           tls_auth_name: "cloudflare-dns.com"
           tls_pubkey_pinset:
                 - digest: "sha256"
-                  value: V6zes8hHBVwUECsHf7uV5xGM7dj3uMXIS9//7qC8+jU=
+                  value: RKlx+/Jwn2A+dVoU8gQWeRN2+2JxXcFkAczKfgU8OAI=
         - address_data: 1.0.0.1
           tls_auth_name: "cloudflare-dns.com"
           tls_pubkey_pinset:
                 - digest: "sha256"
-                  value: V6zes8hHBVwUECsHf7uV5xGM7dj3uMXIS9//7qC8+jU=
+                  value: RKlx+/Jwn2A+dVoU8gQWeRN2+2JxXcFkAczKfgU8OAI=
         - address_data: 2606:4700:4700::1001
           tls_auth_name: "cloudflare-dns.com"
           tls_pubkey_pinset:
                 - digest: "sha256"
-                  value: V6zes8hHBVwUECsHf7uV5xGM7dj3uMXIS9//7qC8+jU=
+                  value: RKlx+/Jwn2A+dVoU8gQWeRN2+2JxXcFkAczKfgU8OAI=
         '';
     };
 
@@ -191,7 +191,7 @@ in
           no-resolv
           # speed up queries for recent domains
           cache-size=300
-          # only listen on localhost, not on public facing pi addresses
+          # only listen on localhost, not on public facing addresses
           listen-address=::1,127.0.0.1
           interface=lo
           bind-interfaces
