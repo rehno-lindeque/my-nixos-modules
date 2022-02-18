@@ -27,9 +27,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    users.extraGroups = optionalAttrs (cfg.group == "leds") (lib.singleton {
-      name = "leds";
-    });
+    users.groups = optionalAttrs (cfg.group == "leds") { leds = {}; };
 
     services.udev.packages =
       lib.singleton (pkgs.writeTextFile {
